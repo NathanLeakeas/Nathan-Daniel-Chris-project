@@ -4,26 +4,53 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed=1;
-    public float sprintSpeedMult=1.25f;
-    public float verticalSensitivity = 2;
-    public float horizontalSensitivity = 1;
+    public float speed=1f;
+    public float sprintSpeedMult=2.25f;
+    public float verticalSensitivity = 5f;
+    public float horizontalSensitivity = 1f;
     private float camRotationX;
     private CharacterController character;
     public Camera cam;
+    private float yVelocity;
+    public float jumpVelocity = 4f;
+    private float currentSpeedMultiplier;
 
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterController>();
+        yVelocity = 0;
+        currentSpeedMultiplier = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        if (character.isGrounded)
+        {
+            yVelocity = 0;
+        }
+        
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (character.isGrounded)
+            {
+                yVelocity = jumpVelocity;
+            }
+        }
+        if (Input.GetButton("Sprint"))
+        {
+            currentSpeedMultiplier = sprintSpeedMult * speed;
+            Debug.Log("Shift Key Down");
+        }
+        else
+        {
+            currentSpeedMultiplier = speed;
+        }
+
+        Vector3 direction = new Vector3(Input.GetAxis("Horizontal")*currentSpeedMultiplier, yVelocity, Input.GetAxis("Vertical")*currentSpeedMultiplier);
         direction = transform.rotation*direction;
-        character.Move((direction * Time.deltaTime * speed)-new Vector3(0,9.81f,0)*Time.deltaTime);
+        character.Move((direction * Time.deltaTime));
 
         Vector3 horizontalRotation = new Vector3(0, Input.GetAxis("Mouse X") * horizontalSensitivity, 0);
         transform.Rotate(horizontalRotation);
@@ -31,11 +58,10 @@ public class PlayerController : MonoBehaviour
 
         camRotationX -= Input.GetAxis("Mouse Y") * verticalSensitivity;
         camRotationX = Mathf.Clamp(camRotationX, -89f, 89f);
-        Debug.Log(camRotationX);
         cam.transform.eulerAngles = new Vector3(camRotationX, transform.eulerAngles.y, 0.0f);
 
 
-
+        yVelocity -= 9.8f*Time.deltaTime;
 
     }
 
