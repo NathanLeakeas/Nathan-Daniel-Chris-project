@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed=1f;
+    public float speed=3f;
     public float sprintSpeedMult=2.25f;
     public float verticalSensitivity = 5f;
-    public float horizontalSensitivity = 1f;
+    public float horizontalSensitivity = 4f;
     private float camRotationX;
     private CharacterController character;
     public Camera cam;
