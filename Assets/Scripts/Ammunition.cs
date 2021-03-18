@@ -60,6 +60,13 @@ public class Ammunition : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
+
+            TargetJoint2D target = hit.transform.GetComponenet<target>();
+            if (target != null)
+            {
+                target.TakeDamage(damage);
+            }
+
         }
         
         currentAmmo--;
