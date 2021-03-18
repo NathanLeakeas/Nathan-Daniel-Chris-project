@@ -10,6 +10,10 @@ public class Ammunition : MonoBehaviour
     public float reloadTime = 1f;
     private bool isReloading = false;
     public Text ammoDisplay;
+    public float damage = 10f;
+    public float range = 100f;
+
+    public Camera fpsCam;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,11 @@ public class Ammunition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+
         ammoDisplay.text = currentAmmo.ToString();
         
         if (isReloading)
@@ -47,6 +56,12 @@ public class Ammunition : MonoBehaviour
 
     void Shoot()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+        }
+        
         currentAmmo--;
     }
 
