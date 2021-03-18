@@ -535,6 +535,29 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8b73e8872ca76104bbca4ee2b704a1b4, type: 3}
+--- !u!1 &392707062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5281101965604441839, guid: e6ccd44ef29b2bf4ba696d4827a9f199, type: 3}
+  m_PrefabInstance: {fileID: 5281101965126275544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &392707068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392707062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d138967331ce0744dbd535deccaf56ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldsBar: {fileID: 775766654}
+  healthBar: {fileID: 580231334}
+  health: 0
+  shields: 0
+  maxHealth: 50
+  maxShields: 75
 --- !u!1 &449754029
 GameObject:
   m_ObjectHideFlags: 0
