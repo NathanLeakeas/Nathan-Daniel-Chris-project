@@ -7,6 +7,9 @@ public class PlayerStats : MonoBehaviour
 {
     public Slider shieldsBar;
     public Slider healthBar;
+    public GameObject manager;
+    public EnemyManager enemyManager;
+    public GameObject minimap;
 
     public float health;
     public float shields;
@@ -18,7 +21,9 @@ public class PlayerStats : MonoBehaviour
     {
         health = maxHealth;
         shields = maxShields;
-        
+        enemyManager = manager.GetComponent<EnemyManager>();
+
+
 
     }
 
@@ -27,6 +32,15 @@ public class PlayerStats : MonoBehaviour
     {
         shieldsBar.value = shields;
         healthBar.value = health;
+        foreach (GameObject enemy in enemyManager.enemies)
+        {
+            Vector3 enemyPos = this.transform.InverseTransformPoint(enemy.transform.position);
+            if (enemyPos.x < 10 && enemyPos.z < 10)
+            { 
+                //draw enemy on minimap here
+
+            }
+        }
 
         
     }
