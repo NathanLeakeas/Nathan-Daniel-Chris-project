@@ -14,6 +14,7 @@ public class Ammunition : MonoBehaviour
     public float range = 100f;
 
     public Camera fpsCam;
+    public GameObject impactEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -61,11 +62,13 @@ public class Ammunition : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            TargetJoint2D target = hit.transform.GetComponenet<target>();
+            Damage target = hit.transform.GetComponent<Damage>();
             if (target != null)
             {
                 target.TakeDamage(damage);
             }
+
+            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
         }
         
