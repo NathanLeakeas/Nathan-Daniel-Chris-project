@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     public float shields;
     public float maxHealth=50;
     public float maxShields=75;
+    public float maxMapDistance=10;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +33,14 @@ public class PlayerStats : MonoBehaviour
     {
         shieldsBar.value = shields;
         healthBar.value = health;
+        //minimap drawing
         foreach (GameObject enemy in enemyManager.enemies)
         {
             Vector3 enemyPos = this.transform.InverseTransformPoint(enemy.transform.position);
-            if (enemyPos.x < 10 && enemyPos.z < 10)
-            { 
+            if (maxMapDistance >= (Mathf.Sqrt(Mathf.Pow(enemyPos.x, 2)) + Mathf.Sqrt(Mathf.Pow(enemyPos.x, 2))))
+            {
                 //draw enemy on minimap here
+                enemyPos *= (maxMapDistance / 100/*Minmap Height*/);//enemyPos now contains coordinates for the blip on the minimap
 
             }
         }
