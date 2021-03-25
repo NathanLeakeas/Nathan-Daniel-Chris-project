@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Sprint"))
         {
             currentSpeedMultiplier = sprintSpeedMult * speed;
-            Debug.Log("Shift Key Down");
+            //Debug.Log("Shift Key Down");
         }
         else
         {
