@@ -54,12 +54,8 @@ public class PlayerStats : MonoBehaviour
                 Debug.Log(enemyPos);
                 GameObject indicator = (GameObject)Instantiate(enemyIndicator);
                 indicator.transform.SetParent(minimap.transform);
-                RectTransform rt = indicator.GetComponent<RectTransform>();
 
-                /*rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, enemyPos.x, blipHeight);
-                rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, enemyPos.z, blipWidth);*/
                 indicator.transform.localPosition = new Vector3(enemyPos.x, enemyPos.z, 0);
-                //indicator.transform.localScale = new Vector3(blipSize,blipSize,blipSize);
 
             }
         }
