@@ -262,7 +262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d92ef32394b5f474385d74b565a7bdd7, type: 2}
+  - {fileID: 2100000, guid: a9bbb223ebe37214b8e3ecfe823ca818, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -677,6 +677,7 @@ MonoBehaviour:
   shields: 0
   maxHealth: 50
   maxShields: 75
+  maxMapDistance: 10
 --- !u!224 &401053668 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8382148504716977372, guid: 2c376a5454b629b4db002262cb2a08c9, type: 3}
@@ -1786,7 +1787,7 @@ MonoBehaviour:
   damage: 10
   range: 100
   fpsCam: {fileID: 415555291}
-  impactEffect: {fileID: 1637044845}
+  impactEffect: {fileID: 0}
 --- !u!1 &1523034514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,11 +1883,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523034514}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1637044845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1246918334268288255, guid: 3ef0ca27e0b5f2b48841b7df18c1fb7b, type: 3}
-  m_PrefabInstance: {fileID: 1670316071671296853}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1655883023
 GameObject:
   m_ObjectHideFlags: 0
