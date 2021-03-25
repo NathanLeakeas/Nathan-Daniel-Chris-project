@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GunHoldMain
+  - EnemyIndicator
   layers:
   - Default
   - TransparentFX
