@@ -678,17 +678,12 @@ MonoBehaviour:
   shields: 0
   maxHealth: 50
   maxShields: 75
-<<<<<<< HEAD
   maxMapDistance: 10
 --- !u!224 &401053668 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8382148504716977372, guid: 2c376a5454b629b4db002262cb2a08c9, type: 3}
   m_PrefabInstance: {fileID: 8382148504912245560}
   m_PrefabAsset: {fileID: 0}
-=======
-  maxMapDistance: 25
-  blipSize: 0
->>>>>>> c18b7da995b453968a95229961f8902bace2f2bc
 --- !u!20 &415555291 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5281101965030212744, guid: e6ccd44ef29b2bf4ba696d4827a9f199, type: 3}
