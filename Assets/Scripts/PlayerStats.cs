@@ -47,11 +47,12 @@ public class PlayerStats : MonoBehaviour
         foreach (GameObject enemy in enemyManager.enemies)
         {
             Vector3 enemyPos = this.transform.InverseTransformPoint(enemy.transform.position);
-            if (maxMapDistance >= (Mathf.Sqrt(Mathf.Pow(enemyPos.x, 2)) + Mathf.Sqrt(Mathf.Pow(enemyPos.z, 2))))
+            if (maxMapDistance >= (
+                Mathf.Sqrt(Mathf.Pow(enemyPos.x, 2) + Mathf.Pow(enemyPos.z, 2))
+               ))
             {
                 //draw enemy on minimap here
                 enemyPos *= (50/maxMapDistance/*Minmap Height*/);//enemyPos now contains coordinates for the blip on the minimap
-                Debug.Log(enemyPos);
                 GameObject indicator = (GameObject)Instantiate(enemyIndicator);
                 indicator.transform.SetParent(minimap.transform);
 
