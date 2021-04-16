@@ -2697,7 +2697,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 2.3509887e-38, z: -2.3059837e+18, w: 2.0679515e-25}
+  m_BoundingSphereOverride: {x: -0.000006828565, y: 828388.06, z: 3.161e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2827,6 +2827,10 @@ PrefabInstance:
     - target: {fileID: 1246918334268288255, guid: 3ef0ca27e0b5f2b48841b7df18c1fb7b, type: 3}
       propertyPath: m_Name
       value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401376598209554873, guid: 3ef0ca27e0b5f2b48841b7df18c1fb7b, type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ef0ca27e0b5f2b48841b7df18c1fb7b, type: 3}
