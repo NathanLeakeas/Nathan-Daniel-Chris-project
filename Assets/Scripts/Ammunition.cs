@@ -10,7 +10,7 @@ public class Ammunition : MonoBehaviour
     public float reloadTime = 1f;
     private bool isReloading = false;
     public Text ammoDisplay;
-    public float damage = 10f;
+    public float damage = 25f;
     public float range = 100f;
 
     public Camera fpsCam;
@@ -67,9 +67,12 @@ public class Ammunition : MonoBehaviour
             {
                 target.TakeDamage(damage);
             }
+            else
+            {
+                GameObject newHole = Instantiate(impactEffect, (hit.point + hit.normal * .001f), Quaternion.LookRotation(hit.normal));
+                Destroy(newHole, 20f);
+            }
 
-            GameObject newHole = Instantiate(impactEffect, (hit.point + hit.normal*.001f), Quaternion.LookRotation(hit.normal));
-            Destroy(newHole, 20f);
         }
         
         currentAmmo--;
