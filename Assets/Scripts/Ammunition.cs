@@ -62,7 +62,7 @@ public class Ammunition : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            Damage target = hit.transform.GetComponent<Damage>();
+            Damage target = hit.transform.root.GetComponent<Damage>();
             if (target != null)
             {
                 target.TakeDamage(damage);
