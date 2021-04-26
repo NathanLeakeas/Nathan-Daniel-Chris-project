@@ -6,7 +6,9 @@ public class EnemyManager : MonoBehaviour
 {
     public List<GameObject> spawns;
     public List<GameObject> enemies;
-    public GameObject enemy;
+    public GameObject enemyPrefab;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,10 @@ public class EnemyManager : MonoBehaviour
     void SpawnEnemy(GameObject spawn)
     {
         Vector3 spawnPos = spawn.transform.position;
-        enemies.Add(Instantiate(enemy, new Vector3(spawnPos.x, spawnPos.y+1.0f, spawnPos.z), Quaternion.identity));
+        GameObject enemy = Instantiate(enemyPrefab, new Vector3(spawnPos.x, spawnPos.y + 1.0f, spawnPos.z), Quaternion.identity);
+        enemy.GetComponent<EnemyMovement>().target = player;
+        enemies.Add(enemy);
+
 
     }
 }
