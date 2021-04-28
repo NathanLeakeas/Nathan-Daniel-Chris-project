@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement1 : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class EnemyMovement1 : MonoBehaviour
     List<Waypoint> _patrolPoints;
 
     //Private variables for base behavior.
-    NavMeshClass _navMeshAgent;
+    NavMeshAgent agent;
     int _currentPatrolIndex;
     bool _traveling;
     bool _waiting;
@@ -31,9 +32,9 @@ public class EnemyMovement1 : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        _navMeshAgent = this.GetComponent<NavMeshAgent>();
+        agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
-        if (_navMeshAgent == null)
+        if (agent == null)
         {
             Debug.LogError("The nav mesh agent component is now attached to " + gameObject.name);
         }
@@ -56,7 +57,7 @@ public class EnemyMovement1 : MonoBehaviour
     public void Update()
     {
         //Check if we're close to the destination
-        if (_traveling && _navMeshAgent.remainingDistance <= 1.0f)
+        if (_traveling && agent.remainingDistance <= 1.0f)
         {
             _traveling = false;
 
@@ -69,7 +70,7 @@ public class EnemyMovement1 : MonoBehaviour
             else
             {
                 ChangePatrolPoint();
-                SetDesitination();
+                SetDestination();
             }
 
         }
@@ -93,7 +94,7 @@ public class EnemyMovement1 : MonoBehaviour
         if (_patrolPoints != null)
         {
             Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
-            _navMeshAgent.SetDestination(targetVector);
+            agent.SetDestination(targetVector);
             _traveling = true;
         }
     }
