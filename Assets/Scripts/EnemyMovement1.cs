@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class EnemyMovement1 : MonoBehaviour
 {
@@ -28,7 +29,11 @@ public class EnemyMovement1 : MonoBehaviour
     bool _waiting;
     bool _patrolForward;
     float _waitTimer;
+
+    //Player
+    public GameObject target;
     
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -91,13 +96,31 @@ public class EnemyMovement1 : MonoBehaviour
 
     private void SetDestination()
     {
-        if (_patrolPoints != null)
+        Vector3 targetVector = target.transform.position;
+        Vector3 targetPos = transform.InverseTransformPoint(target.transform.position);
+        Vector3 agentPos = transform.InverseTransformPoint(agent.transform.position);
+        float dist = Mathf.Sqrt(Mathf.Pow(targetPos.x, 2) + Mathf.Pow(targetPos.z, 2)) - Mathf.Sqrt(Mathf.Pow(agentPos.x, 2) + Mathf.Pow(agentPos.z, 2));
+        if (dist<=15 && dist >= 8)
         {
-            Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
             agent.SetDestination(targetVector);
-            _traveling = true;
         }
-    }
+        
+        //Go back to patrolling if player is not close.
+        else if (dist>15)
+        { 
+            if (_patrolPoints != null)
+            {
+                targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
+                agent.SetDestination(targetVector);
+                _traveling = true;
+            }
+        }
+
+        else if (dist<8)
+        {
+            Shoot();
+        }
+    }   
 
     private void ChangePatrolPoint()
     {
@@ -119,4 +142,20 @@ public class EnemyMovement1 : MonoBehaviour
             }
         }
     }
+
+
+    private void Shoot()
+    {
+        //turn to face player
+        this.transform.LookAt(target);
+        Vector3 shootAdjustAngle = new Vector3(Random.Range(-15f, 15f),Random.Range(-15f, 15f),Random.Range(-15f, 15f));
+        RaycastHit hit;
+        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, 30f))
+        { 
+            //reduce player health
+        }
+
+
+    }
+
 }
