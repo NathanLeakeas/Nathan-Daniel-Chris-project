@@ -63,4 +63,22 @@ public class PlayerStats : MonoBehaviour
 
         
     }
+
+    public void takeDamage(int damage)
+    {
+        if (shields > 0)
+        {
+            shields -= damage;
+            if (shields < 0)
+            {
+                health += shields;
+                shields = 0;
+            }
+        }
+        else
+        { 
+            health-=damage;
+        }
+    }
+
 }
