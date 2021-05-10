@@ -439,6 +439,11 @@ MonoBehaviour:
   enemies: []
   enemyPrefab: {fileID: 2394499194488552021, guid: 225f260e782cfe84482165b282b33790, type: 3}
   player: {fileID: 392707062}
+  patrolPoints:
+  - {fileID: 1334421929}
+  - {fileID: 1104300215}
+  - {fileID: 1171591302}
+  - {fileID: 1280843851}
 --- !u!4 &194200750
 Transform:
   m_ObjectHideFlags: 0
@@ -699,7 +704,7 @@ MonoBehaviour:
   shieldsBar: {fileID: 775766654}
   healthBar: {fileID: 580231334}
   manager: {fileID: 194200748}
-  enemyManager: {fileID: 194200749}
+  enemyManager: {fileID: 0}
   minimap: {fileID: 1090020019}
   enemyIndicator: {fileID: 9211300638399716590, guid: 2c376a5454b629b4db002262cb2a08c9, type: 3}
   health: 0
@@ -2574,6 +2579,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -341843164979827705, guid: 225f260e782cfe84482165b282b33790, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 5281101965604441839, guid: e6ccd44ef29b2bf4ba696d4827a9f199, type: 3}
     - target: {fileID: -341843164979827705, guid: 225f260e782cfe84482165b282b33790, type: 3}
       propertyPath: m_Enabled
       value: 1
