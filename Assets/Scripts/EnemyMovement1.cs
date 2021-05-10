@@ -147,8 +147,8 @@ public class EnemyMovement1 : MonoBehaviour
     private void Shoot()
     {
         //turn to face player
-        this.transform.LookAt(target);
-        Vector3 shootAdjustAngle = new Vector3(Random.Range(-15f, 15f),Random.Range(-15f, 15f),Random.Range(-15f, 15f));
+        this.transform.LookAt(target.transform);
+        Vector3 shootAdjustAngle = new Vector3(UnityEngine.Random.Range(-15f, 15f), UnityEngine.Random.Range(-15f, 15f), UnityEngine.Random.Range(-15f, 15f));
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, 30f))
         { 
