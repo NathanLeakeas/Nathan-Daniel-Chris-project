@@ -61,6 +61,8 @@ public class EnemyMovement1 : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        SetDestination();
+        /**
         //Check if we're close to the destination
         if (_traveling && agent.remainingDistance <= 1.0f)
         {
@@ -92,6 +94,7 @@ public class EnemyMovement1 : MonoBehaviour
                 SetDestination();
             }
         }
+        /*/
     }
 
     private void SetDestination()
@@ -99,10 +102,10 @@ public class EnemyMovement1 : MonoBehaviour
         Vector3 targetVector = target.transform.position;
         Vector3 targetPos = transform.InverseTransformPoint(target.transform.position);
         Vector3 agentPos = transform.InverseTransformPoint(agent.transform.position);
-        float dist = Mathf.Sqrt(Mathf.Pow(targetPos.x, 2) + Mathf.Pow(targetPos.z, 2)) - Mathf.Sqrt(Mathf.Pow(agentPos.x, 2) + Mathf.Pow(agentPos.z, 2));
+        float dist = Mathf.Sqrt(Mathf.Pow(transform.InverseTransformPoint(target.transform.position).x, 2) + Mathf.Pow(transform.InverseTransformPoint(target.transform.position).z, 2)) - Mathf.Sqrt(Mathf.Pow(agentPos.x, 2) + Mathf.Pow(agentPos.z, 2));
         if (dist<=15 && dist >= 8)
         {
-            agent.SetDestination(targetVector);
+            agent.SetDestination(target.transform.position);
         }
         
         //Go back to patrolling if player is not close.
@@ -118,7 +121,9 @@ public class EnemyMovement1 : MonoBehaviour
 
         else if (dist<8)
         {
+            agent.ResetPath();
             Shoot();
+            
         }
     }   
 
@@ -154,6 +159,8 @@ public class EnemyMovement1 : MonoBehaviour
         { 
             //reduce player health
         }
+        Debug.Log("Shooting...");
+        target.GetComponent<PlayerStats>().takeDamage(1);
 
 
     }
