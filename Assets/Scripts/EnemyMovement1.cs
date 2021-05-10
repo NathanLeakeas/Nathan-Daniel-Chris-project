@@ -20,7 +20,7 @@ public class EnemyMovement1 : MonoBehaviour
 
     //The list of all patrol nodes to visit.
     [SerializeField]
-    List<Waypoint> _patrolPoints;
+    public List<Waypoint> _patrolPoints;
 
     //Private variables for base behavior.
     NavMeshAgent agent;

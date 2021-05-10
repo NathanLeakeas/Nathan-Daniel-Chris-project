@@ -8,6 +8,8 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> enemies;
     public GameObject enemyPrefab;
     public GameObject player;
+    [SerializeField]
+    public List<Waypoint> patrolPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class EnemyManager : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, new Vector3(spawnPos.x, spawnPos.y + 1.0f, spawnPos.z), Quaternion.identity);
         enemy.GetComponent<EnemyMovement>().target = player;
         enemies.Add(enemy);
+        enemy.GetComponent<EnemyMovement1>().target = player;
+        enemy.GetComponent<EnemyMovement1>()._patrolPoints = patrolPoints;
 
 
     }
