@@ -2169,6 +2169,7 @@ MonoBehaviour:
   ammoDisplay: {fileID: 1917892322}
   damage: 10
   range: 100
+  barrelSound: {fileID: 1122301917}
   fpsCam: {fileID: 415555291}
   impactEffect: {fileID: 2923356925179484813, guid: e446a3d026974a94bb2c03559c1d4045, type: 3}
 --- !u!1 &1523034514
