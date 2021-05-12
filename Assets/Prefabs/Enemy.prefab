@@ -255,14 +255,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6ecc89ba34351489ecd7a0da3fc5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolWaiting: 0
-  _totalWaitTime: 3
-  _switchProbability: 0.2
+  maxCooldown: 5
   _patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4822575610637450065, guid: 789e37c6af97e0d4493916e740906bbd, type: 3}
+  - {fileID: 2965221038777903434, guid: 59b99956317aada47b26ec2c61aea41b, type: 3}
+  - {fileID: 4754029901315394267, guid: c8372da682dd22346a74ab3991048cac, type: 3}
+  - {fileID: 6110802586266824056, guid: 1be7d1f46ac471346891dbe056391c48, type: 3}
   target: {fileID: 0}
 --- !u!1 &2394499195193714312
 GameObject:

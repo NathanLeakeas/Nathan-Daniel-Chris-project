@@ -6,17 +6,9 @@ using System;
 
 public class EnemyMovement1 : MonoBehaviour
 {
-    //Dictates whether the agent waits on each node
     [SerializeField]
-    bool _patrolWaiting;
-
-    //The total time we wait at each node.
-    [SerializeField]
-    float _totalWaitTime = 3f;
-
-    //The probability of switching direction
-    [SerializeField]
-    float _switchProbability = 0.2f;
+    float maxCooldown = 5f;
+    float cooldown;
 
     //The list of all patrol nodes to visit.
     [SerializeField]
@@ -32,13 +24,13 @@ public class EnemyMovement1 : MonoBehaviour
 
     //Player
     public GameObject target;
-    
+
 
     // Start is called before the first frame update
     public void Start()
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-
+        cooldown = 0f;
         if (agent == null)
         {
             Debug.LogError("The nav mesh agent component is now attached to " + gameObject.name);
@@ -62,6 +54,7 @@ public class EnemyMovement1 : MonoBehaviour
     public void Update()
     {
         SetDestination();
+        cooldown -= Time.deltaTime;
         /**
         //Check if we're close to the destination
         if (_traveling && agent.remainingDistance <= 1.0f)
@@ -103,48 +96,56 @@ public class EnemyMovement1 : MonoBehaviour
         Vector3 targetPos = transform.InverseTransformPoint(target.transform.position);
         Vector3 agentPos = transform.InverseTransformPoint(agent.transform.position);
         float dist = Mathf.Sqrt(Mathf.Pow(transform.InverseTransformPoint(target.transform.position).x, 2) + Mathf.Pow(transform.InverseTransformPoint(target.transform.position).z, 2)) - Mathf.Sqrt(Mathf.Pow(agentPos.x, 2) + Mathf.Pow(agentPos.z, 2));
-        if (dist<=15 && dist >= 8)
+        if (dist <= 15 && dist >= 8)
         {
             agent.SetDestination(target.transform.position);
         }
-        
+
         //Go back to patrolling if player is not close.
-        else if (dist>15)
-        { 
-            if (_patrolPoints != null)
+        else if (dist > 15)
+        {
+            agent.SetDestination(_patrolPoints[_currentPatrolIndex].transform.position);
+            
+            if(agent.remainingDistance==0)
             {
-                targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
-                agent.SetDestination(targetVector);
-                _traveling = true;
+                ChangePatrolPoint();
+                Debug.Log(_patrolPoints[_currentPatrolIndex]);
             }
+            //_traveling = true;
         }
 
-        else if (dist<8)
+        else if (dist < 8)
         {
             agent.ResetPath();
-            Shoot();
-            
+            this.transform.LookAt(target.transform);
+            if (cooldown <= 0)
+            {
+                Shoot();
+            }
         }
-    }   
+    }
 
     private void ChangePatrolPoint()
     {
+        /*/
         if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
         {
             _patrolForward = !_patrolForward;
         }
+        /*/
 
-        if (_patrolForward)
+        
+
+        if (_currentPatrolIndex == (_patrolPoints.Count))
         {
-            _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
+            _currentPatrolIndex = 0;
         }
 
         else
         {
-            if (--_currentPatrolIndex < 0)
-            {
-                _currentPatrolIndex = _patrolPoints.Count - 1;
-            }
+            _currentPatrolIndex += 1;
+            Debug.Log(_currentPatrolIndex);
+            Debug.Log(_patrolPoints.Count);
         }
     }
 
@@ -152,15 +153,16 @@ public class EnemyMovement1 : MonoBehaviour
     private void Shoot()
     {
         //turn to face player
-        this.transform.LookAt(target.transform);
+        cooldown = maxCooldown;
         Vector3 shootAdjustAngle = new Vector3(UnityEngine.Random.Range(-15f, 15f), UnityEngine.Random.Range(-15f, 15f), UnityEngine.Random.Range(-15f, 15f));
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, 30f))
-        { 
-            //reduce player health
+        if (Physics.Raycast(this.transform.position, this.transform.forward + shootAdjustAngle, out hit, 30f))
+        {
+            target.GetComponent<PlayerStats>().takeDamage(10);
+
         }
-        Debug.Log("Shooting...");
-        target.GetComponent<PlayerStats>().takeDamage(1);
+        //Debug.Log("Shooting...");
+
 
 
     }
