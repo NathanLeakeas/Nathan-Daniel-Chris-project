@@ -12,7 +12,7 @@ public class Ammunition : MonoBehaviour
     public Text ammoDisplay;
     public float damage = 25f;
     public float range = 100f;
-
+    public AudioSource barrelSound;
     public Camera fpsCam;
     public GameObject impactEffect;
 
@@ -57,6 +57,7 @@ public class Ammunition : MonoBehaviour
 
     void Shoot()
     {
+        barrelSound.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
