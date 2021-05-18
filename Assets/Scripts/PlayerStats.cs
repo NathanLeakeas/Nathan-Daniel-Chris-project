@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     public float maxShields=75;
     public float maxMapDistance=25;
 
+    public float timeInGame;
+
     public Text time;
     public Text killcount;
 
@@ -32,6 +34,7 @@ public class PlayerStats : MonoBehaviour
         shields = maxShields;
         enemiesKilled = 0;
         enemyManager = manager.GetComponent<EnemyManager>();
+        timeInGame = 0;
 
 
 
@@ -40,7 +43,20 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeInGame += Time.deltaTime;
+
         killcount.text = enemiesKilled.ToString();
+
+        int minutesInGame = ((int)timeInGame)/60;
+        int secondsInGame = ((int)timeInGame) - minutesInGame * 60;
+        string zero = "";
+        if (secondsInGame < 10)
+        {
+            zero = "0";
+        }
+        time.text = "" + minutesInGame.ToString() + ":" +zero + secondsInGame.ToString();
+        
+
         foreach (Transform child in shieldsBar.transform.parent)
         {
             GameObject element = child.gameObject;
