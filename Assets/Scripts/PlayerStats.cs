@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     public float maxShields=75;
     public float maxMapDistance=25;
 
+    public int enemiesKilled;
+
     public float blipSize=50;
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     {
         health = maxHealth;
         shields = maxShields;
+        enemiesKilled = 0;
         enemyManager = manager.GetComponent<EnemyManager>();
 
 
@@ -34,6 +37,15 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach (Transform child in shieldsBar.transform.parent)
+        {
+            GameObject element = child.gameObject;
+            if (element.tag == "Scoreboard")
+            {
+                element.SetActive(Input.GetKey(KeyCode.Tab));
+            }
+        }
+
         shieldsBar.value = shields;
         healthBar.value = health;
         //minimap drawing

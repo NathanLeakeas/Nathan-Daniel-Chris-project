@@ -67,6 +67,10 @@ public class Ammunition : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
+                if (target == null)
+                {
+                    this.GetComponent<PlayerStats>().enemiesKilled++;
+                }
             }
             else
             {
