@@ -15,6 +15,7 @@ public class Ammunition : MonoBehaviour
     public AudioSource barrelSound;
     public Camera fpsCam;
     public GameObject impactEffect;
+    public ParticleSystem muzzleFlash;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class Ammunition : MonoBehaviour
     void Shoot()
     {
         barrelSound.Play();
+        muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
