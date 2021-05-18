@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GunHoldMain
   - EnemyIndicator
+  - NonScore
+  - Scoreboard
   layers:
   - Default
   - TransparentFX

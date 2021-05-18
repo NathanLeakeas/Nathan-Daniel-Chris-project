@@ -96,25 +96,25 @@ public class EnemyMovement1 : MonoBehaviour
         Vector3 targetPos = transform.InverseTransformPoint(target.transform.position);
         Vector3 agentPos = transform.InverseTransformPoint(agent.transform.position);
         float dist = Mathf.Sqrt(Mathf.Pow(transform.InverseTransformPoint(target.transform.position).x, 2) + Mathf.Pow(transform.InverseTransformPoint(target.transform.position).z, 2)) - Mathf.Sqrt(Mathf.Pow(agentPos.x, 2) + Mathf.Pow(agentPos.z, 2));
-        if (dist <= 15 && dist >= 8)
+        if (dist <= 15f && dist >= 8f)
         {
             agent.SetDestination(target.transform.position);
         }
 
         //Go back to patrolling if player is not close.
-        else if (dist > 15)
+        else if (dist > 15f)
         {
             agent.SetDestination(_patrolPoints[_currentPatrolIndex].transform.position);
             
-            if(agent.remainingDistance==0)
+            if(agent.remainingDistance<1f)
             {
                 ChangePatrolPoint();
-                Debug.Log(_patrolPoints[_currentPatrolIndex]);
+                //Debug.Log(_patrolPoints[_currentPatrolIndex]);
             }
             //_traveling = true;
         }
 
-        else if (dist < 8)
+        else if (dist < 8f)
         {
             agent.ResetPath();
             this.transform.LookAt(target.transform);
@@ -136,7 +136,7 @@ public class EnemyMovement1 : MonoBehaviour
 
         
 
-        if (_currentPatrolIndex == (_patrolPoints.Count))
+        if (_currentPatrolIndex == (_patrolPoints.Count-1))
         {
             _currentPatrolIndex = 0;
         }
@@ -144,8 +144,8 @@ public class EnemyMovement1 : MonoBehaviour
         else
         {
             _currentPatrolIndex += 1;
-            Debug.Log(_currentPatrolIndex);
-            Debug.Log(_patrolPoints.Count);
+            //Debug.Log(_currentPatrolIndex);
+            //Debug.Log(_patrolPoints.Count);
         }
     }
 

@@ -69,7 +69,7 @@ public class Ammunition : MonoBehaviour
                 target.TakeDamage(damage);
             }
             else
-            {
+            { 
                 GameObject newHole = Instantiate(impactEffect, (hit.point + hit.normal * .001f), Quaternion.LookRotation(hit.normal));
                 Destroy(newHole, 20f);
             }
