@@ -18,6 +18,9 @@ public class PlayerStats : MonoBehaviour
     public float maxShields=75;
     public float maxMapDistance=25;
 
+    public Text time;
+    public Text killcount;
+
     public int enemiesKilled;
 
     public float blipSize=50;

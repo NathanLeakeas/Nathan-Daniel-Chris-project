@@ -690,6 +690,8 @@ MonoBehaviour:
   maxHealth: 50
   maxShields: 75
   maxMapDistance: 10
+  time: {fileID: 1426659782}
+  killcount: {fileID: 1691197455}
   enemiesKilled: 0
   blipSize: 50
 --- !u!20 &415555291 stripped
@@ -2299,7 +2301,7 @@ GameObject:
   - component: {fileID: 1426659783}
   - component: {fileID: 1426659782}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Timer
   m_TagString: Scoreboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2667,7 +2669,7 @@ GameObject:
   - component: {fileID: 1691197456}
   - component: {fileID: 1691197455}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: Kill Counter
   m_TagString: Scoreboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
