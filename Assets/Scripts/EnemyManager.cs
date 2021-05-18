@@ -35,6 +35,7 @@ public class EnemyManager : MonoBehaviour
         enemies.Add(enemy);
         enemy.GetComponent<EnemyMovement1>().target = player;
         enemy.GetComponent<EnemyMovement1>()._patrolPoints = patrolPoints;
+        enemy.GetComponent<Damage>().player = player.GetComponent<PlayerStats>();
 
 
     }

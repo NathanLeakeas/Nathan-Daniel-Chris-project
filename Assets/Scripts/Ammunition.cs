@@ -67,13 +67,9 @@ public class Ammunition : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
-                if (target == null)
-                {
-                    this.GetComponent<PlayerStats>().enemiesKilled++;
-                }
             }
             else
-            {
+            { 
                 GameObject newHole = Instantiate(impactEffect, (hit.point + hit.normal * .001f), Quaternion.LookRotation(hit.normal));
                 Destroy(newHole, 20f);
             }

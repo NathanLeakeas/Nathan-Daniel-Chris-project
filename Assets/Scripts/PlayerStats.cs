@@ -40,6 +40,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        killcount.text = enemiesKilled.ToString();
         foreach (Transform child in shieldsBar.transform.parent)
         {
             GameObject element = child.gameObject;
@@ -75,7 +76,7 @@ public class PlayerStats : MonoBehaviour
 
             }
         }
-
+        
         
     }
 
