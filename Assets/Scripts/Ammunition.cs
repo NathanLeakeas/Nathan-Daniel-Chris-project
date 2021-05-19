@@ -13,9 +13,10 @@ public class Ammunition : MonoBehaviour
     public float damage = 25f;
     public float range = 100f;
     public AudioSource barrelSound;
+    public ParticleSystem muzzleFlash;
     public Camera fpsCam;
     public GameObject impactEffect;
-    public ParticleSystem muzzleFlash;
+    
 
     // Start is called before the first frame update
     void Start()

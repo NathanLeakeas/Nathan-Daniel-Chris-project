@@ -21,6 +21,8 @@ public class EnemyMovement1 : MonoBehaviour
     bool _waiting;
     bool _patrolForward;
     float _waitTimer;
+    public AudioSource barrelSound;
+    public ParticleSystem muzzleFlash;
 
     //Player
     public GameObject target;
@@ -156,6 +158,8 @@ public class EnemyMovement1 : MonoBehaviour
         cooldown = maxCooldown;
         Vector3 shootAdjustAngle = new Vector3(UnityEngine.Random.Range(-15f, 15f), UnityEngine.Random.Range(-15f, 15f), UnityEngine.Random.Range(-15f, 15f));
         RaycastHit hit;
+        barrelSound.Play();
+        muzzleFlash.Play();
         if (Physics.Raycast(this.transform.position, this.transform.forward + shootAdjustAngle, out hit, 30f))
         {
             target.GetComponent<PlayerStats>().takeDamage(10);
