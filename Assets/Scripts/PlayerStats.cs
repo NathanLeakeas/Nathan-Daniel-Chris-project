@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     public GameObject minimap;
     public GameObject enemyIndicator;
 
+    public bool dead;
     public float health;
     public float shields;
     public float maxHealth=50;
@@ -22,6 +23,10 @@ public class PlayerStats : MonoBehaviour
 
     public Text time;
     public Text killcount;
+    public Text accuracy;
+    public int totalShots;
+    public int shotsHit;
+    public float accuracyRate;
 
     public int enemiesKilled;
 
@@ -35,6 +40,9 @@ public class PlayerStats : MonoBehaviour
         enemiesKilled = 0;
         enemyManager = manager.GetComponent<EnemyManager>();
         timeInGame = 0;
+        totalShots = 0;
+        shotsHit = 0;
+        accuracyRate = 0f;
 
 
 
@@ -55,6 +63,15 @@ public class PlayerStats : MonoBehaviour
             zero = "0";
         }
         time.text = "" + minutesInGame.ToString() + ":" +zero + secondsInGame.ToString();
+        if (totalShots > 0)
+        {
+            accuracyRate = (shotsHit*100 / totalShots );
+            Debug.Log(accuracyRate);
+            
+        }
+        accuracy.text = "" + (int)accuracyRate+"%";
+
+
         
 
         foreach (Transform child in shieldsBar.transform.parent)
@@ -110,6 +127,10 @@ public class PlayerStats : MonoBehaviour
         else
         { 
             health-=damage;
+        }
+        if (health <= 0)
+        {
+            dead = true;
         }
     }
 

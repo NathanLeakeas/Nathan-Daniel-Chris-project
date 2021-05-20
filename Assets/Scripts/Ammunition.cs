@@ -16,6 +16,7 @@ public class Ammunition : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public Camera fpsCam;
     public GameObject impactEffect;
+    public PlayerStats player;
     
 
     // Start is called before the first frame update
@@ -62,6 +63,7 @@ public class Ammunition : MonoBehaviour
         barrelSound.Play();
         muzzleFlash.Play();
         RaycastHit hit;
+        player.totalShots++;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
@@ -70,6 +72,7 @@ public class Ammunition : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
+                player.shotsHit++;
             }
             else
             { 
