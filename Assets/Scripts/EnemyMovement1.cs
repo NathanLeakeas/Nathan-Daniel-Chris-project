@@ -7,7 +7,7 @@ using System;
 public class EnemyMovement1 : MonoBehaviour
 {
     [SerializeField]
-    float maxCooldown = 5f;
+    float maxCooldown = 2.5f;
     float cooldown;
 
     //The list of all patrol nodes to visit.

@@ -7557,7 +7557,7 @@ MonoBehaviour:
   maxAmmo: 16
   reloadTime: 1
   ammoDisplay: {fileID: 1917892322}
-  damage: 10
+  damage: 25
   range: 100
   barrelSound: {fileID: 1122301917}
   muzzleFlash: {fileID: 304381942}
