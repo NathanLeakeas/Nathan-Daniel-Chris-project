@@ -162,7 +162,7 @@ public class EnemyMovement1 : MonoBehaviour
         muzzleFlash.Play();
         if (Physics.Raycast(this.transform.position, this.transform.forward + shootAdjustAngle, out hit, 30f))
         {
-            target.GetComponent<PlayerStats>().takeDamage(10);
+            target.GetComponent<PlayerStats>().takeDamage(20);
 
         }
         //Debug.Log("Shooting...");

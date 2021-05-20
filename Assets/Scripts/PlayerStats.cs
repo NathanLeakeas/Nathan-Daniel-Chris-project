@@ -131,6 +131,7 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             dead = true;
+            //Time.timeScale = 0f;
         }
     }
 
