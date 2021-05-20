@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     {
         Vector3 spawnPos = spawn.transform.position;
         GameObject enemy = Instantiate(enemyPrefab, new Vector3(spawnPos.x, spawnPos.y + 1.0f, spawnPos.z), Quaternion.identity);
-        enemy.GetComponent<EnemyMovement>().target = player;
+        //enemy.GetComponent<EnemyMovement>().target = player;
         enemies.Add(enemy);
         enemy.GetComponent<EnemyMovement1>().target = player;
         enemy.GetComponent<EnemyMovement1>()._patrolPoints = patrolPoints;
