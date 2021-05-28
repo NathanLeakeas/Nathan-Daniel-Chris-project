@@ -98,13 +98,13 @@ public class EnemyMovement1 : MonoBehaviour
         Vector3 targetPos = transform.InverseTransformPoint(target.transform.position);
         Vector3 agentPos = transform.InverseTransformPoint(agent.transform.position);
         float dist = Mathf.Sqrt(Mathf.Pow(transform.InverseTransformPoint(target.transform.position).x, 2) + Mathf.Pow(transform.InverseTransformPoint(target.transform.position).z, 2)) - Mathf.Sqrt(Mathf.Pow(agentPos.x, 2) + Mathf.Pow(agentPos.z, 2));
-        if (dist <= 15f && dist >= 8f)
+        if (dist <= 20f && dist >= 10f)
         {
             agent.SetDestination(target.transform.position);
         }
 
         //Go back to patrolling if player is not close.
-        else if (dist > 15f)
+        else if (dist > 20f)
         {
             agent.SetDestination(_patrolPoints[_currentPatrolIndex].transform.position);
             
@@ -116,7 +116,7 @@ public class EnemyMovement1 : MonoBehaviour
             //_traveling = true;
         }
 
-        else if (dist < 8f)
+        else if (dist < 10f)
         {
             agent.ResetPath();
             this.transform.LookAt(target.transform);

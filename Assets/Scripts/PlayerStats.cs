@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -136,8 +137,15 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             dead = true;
+            RestartScene();
             //Time.timeScale = 0f;
         }
     }
 
+    public void RestartScene()
+    {
+        Scene thisScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(thisScene.name);
+
+    }
 }
