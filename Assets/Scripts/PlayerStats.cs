@@ -51,6 +51,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         timeInGame += Time.deltaTime;
 
         killcount.text = enemiesKilled.ToString();
@@ -80,6 +81,10 @@ public class PlayerStats : MonoBehaviour
             if (element.tag == "Scoreboard")
             {
                 element.SetActive(Input.GetKey(KeyCode.Tab));
+            }
+            if (element.tag == "PausedUI")
+            {
+                element.SetActive(gameObject.GetComponent<PlayerController>().paused);
             }
         }
 

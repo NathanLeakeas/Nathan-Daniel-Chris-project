@@ -29,7 +29,7 @@ public class Ammunition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !player.GetComponent<PlayerController>().paused)
         {
             Shoot();
         }

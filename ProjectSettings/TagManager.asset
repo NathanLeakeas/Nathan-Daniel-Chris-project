@@ -8,6 +8,7 @@ TagManager:
   - EnemyIndicator
   - NonScore
   - Scoreboard
+  - PausedUI
   layers:
   - Default
   - TransparentFX

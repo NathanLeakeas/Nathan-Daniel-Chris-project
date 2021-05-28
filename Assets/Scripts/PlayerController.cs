@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private float yVelocity;
     public float jumpVelocity = 4f;
     private float currentSpeedMultiplier;
+    public bool paused;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +22,26 @@ public class PlayerController : MonoBehaviour
         character = GetComponent<CharacterController>();
         yVelocity = 0;
         currentSpeedMultiplier = speed;
+        paused = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (paused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = !paused;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         if (character.isGrounded)
         {
@@ -54,12 +70,17 @@ public class PlayerController : MonoBehaviour
         character.Move((direction * Time.deltaTime));
 
         Vector3 horizontalRotation = new Vector3(0, Input.GetAxis("Mouse X") * horizontalSensitivity, 0);
-        transform.Rotate(horizontalRotation);
+        
 
 
         camRotationX -= Input.GetAxis("Mouse Y") * verticalSensitivity;
         camRotationX = Mathf.Clamp(camRotationX, -89f, 89f);
-        cam.transform.eulerAngles = new Vector3(camRotationX, transform.eulerAngles.y, 0.0f);
+        if(!paused)
+        {
+            cam.transform.eulerAngles = new Vector3(camRotationX, transform.eulerAngles.y, 0.0f);
+            transform.Rotate(horizontalRotation);
+        }
+        
 
 
         yVelocity -= 9.8f*Time.deltaTime;
