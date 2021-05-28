@@ -5530,7 +5530,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5004541818955356269}
   - component: {fileID: 4825903016992103491}
-  - component: {fileID: 4825903016992103500}
   - component: {fileID: 4825903016992103503}
   - component: {fileID: 4825903016992103502}
   - component: {fileID: 4825903016992103488}
@@ -5579,23 +5578,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9999998, y: 3.8845038, z: 1.1671996}
   m_Center: {x: 0, y: -0.3407878, z: 0.27815706}
---- !u!114 &4825903016992103500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5636365883344126679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48df10bcb2cdda4418cbed1fbc7c5d94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawns: []
-  enemies: []
-  enemyPrefab: {fileID: 0}
-  player: {fileID: 0}
-  patrolPoints: []
 --- !u!114 &4825903016992103503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5627,6 +5609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   player: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!195 &4825903016992103488
 NavMeshAgent:
   m_ObjectHideFlags: 0

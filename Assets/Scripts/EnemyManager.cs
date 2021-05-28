@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemies = new List<GameObject>();
         //initial spawns
         foreach(GameObject spawn in spawns)
         {
@@ -25,6 +26,13 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         //hi
+        if (enemies.Count == 0)
+        {
+            foreach (GameObject spawn in spawns)
+            {
+                SpawnEnemy(spawn);
+            }
+        }
     }
 
     void SpawnEnemy(GameObject spawn)
@@ -36,6 +44,7 @@ public class EnemyManager : MonoBehaviour
         enemy.GetComponent<EnemyMovement1>().target = player;
         enemy.GetComponent<EnemyMovement1>()._patrolPoints = patrolPoints;
         enemy.GetComponent<Damage>().player = player.GetComponent<PlayerStats>();
+        enemy.GetComponent<Damage>().manager = gameObject;
 
 
     }

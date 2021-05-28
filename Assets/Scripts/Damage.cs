@@ -4,6 +4,7 @@ public class Damage : MonoBehaviour
 {
     public float health = 100f;
     public PlayerStats player;
+    public GameObject manager;
 
     public void TakeDamage(float amount)
     {
@@ -18,6 +19,7 @@ public class Damage : MonoBehaviour
 
     void Die()
     {
+        manager.GetComponent<EnemyManager>().enemies.Remove(gameObject);
         Destroy(gameObject);
     }
 }

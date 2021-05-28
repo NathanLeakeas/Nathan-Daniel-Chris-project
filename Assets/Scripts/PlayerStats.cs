@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
 {
     public Slider shieldsBar;
     public Slider healthBar;
-    public GameObject manager;
+    //public GameObject manager;
     public EnemyManager enemyManager;
     public GameObject minimap;
     public GameObject enemyIndicator;
@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
         health = maxHealth;
         shields = maxShields;
         enemiesKilled = 0;
-        enemyManager = manager.GetComponent<EnemyManager>();
+        //enemyManager = manager.GetComponent<EnemyManager>();
         timeInGame = 0;
         totalShots = 0;
         shotsHit = 0;
