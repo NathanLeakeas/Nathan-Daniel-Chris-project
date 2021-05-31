@@ -27,13 +27,13 @@ None.
 Hit the play button at the top of the Unity Scene.  You will now be spawned as the character and be able to move, aim, and shoot.
 
 # Remaining Stories
-Animation
-Inventory / multiple weapons
-Multiple level maps
-Increasing difficulty
-Enemies react to getting shot when at a great distance from the user.
-Sync player movements over network
-Sync bullets over network
+* Animation
+* Inventory / multiple weapons
+* Multiple level maps
+* Increasing difficulty
+* Enemies react to getting shot when at a great distance from the user.
+* Sync player movements over network
+* Sync bullets over network
 
 # Known Issues
 When colliding with an enemy, you can see inside it.
